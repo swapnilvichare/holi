@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Holi Celebration 2025</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #ff6f61, #ff914d, #ffcc00);
+            color: white;
+            text-align: center;
+            transition: background 1s ease-in-out;
+        }
+        .section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: all 0.5s ease-in-out;
+        }
+        h1 {
+            font-size: 65px;
+            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .button {
+            padding: 14px 30px;
+            background: #ff4081;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            border-radius: 10px;
+            margin: 10px;
+            transition: transform 0.2s;
+        }
+        .button:hover {
+            background: #c2185b;
+            transform: scale(1.1);
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+        }
+        .gallery img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .upload-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            color: #333;
+            text-align: center;
+        }
+        .share-buttons {
+            margin-top: 20px;
+        }
+        .share-buttons a {
+            margin: 5px;
+            text-decoration: none;
+            color: white;
+            font-size: 30px;
+            padding: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, background 0.2s;
+        }
+        .share-buttons a:hover {
+            transform: scale(1.2);
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .chat-box {
+            width: 300px;
+            height: 400px;
+            border: 2px solid white;
+            background: white;
+            color: black;
+            overflow-y: auto;
+            padding: 10px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <section class="section" id="home">
+        <h1>🌈 Happy Holi 2025! 🎨</h1>
+        <button class="button" onclick="celebrateHoli()">Celebrate</button>
+        <button class="button" onclick="toggleMusic()">🎵 Play/Pause Music</button>
+    </section>
+    
+    <section class="section" id="gallery-section">
+        <h2>Shared Holi Images 🎉</h2>
+        <div class="gallery" id="gallery"></div>
+        <div class="upload-container">
+            <input type="file" id="imageUpload" accept="image/*">
+            <button class="button" onclick="uploadImage()">Upload</button>
+        </div>
+        <div class="share-buttons">
+            <a href="#" onclick="shareOnSocial('whatsapp')"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" onclick="shareOnSocial('facebook')"><i class="fab fa-facebook"></i></a>
+            <a href="#" onclick="shareOnSocial('twitter')"><i class="fab fa-twitter"></i></a>
+            <a href="#" onclick="shareOnSocial('instagram')"><i class="fab fa-instagram"></i></a>
+            <a href="#" onclick="shareOnSocial('linkedin')"><i class="fab fa-linkedin"></i></a>
+            <a href="#" onclick="shareOnSocial('telegram')"><i class="fab fa-telegram"></i></a>
+        </div>
+    </section>
+    
+    <section class="section" id="chat-section">
+        <h2>Live Chat</h2>
+        <div class="chat-box" id="chatBox"></div>
+        <input type="text" id="chatInput" placeholder="Type a message...">
+        <button class="button" onclick="sendMessage()">Send</button>
+    </section>
+    
+    <audio id="holiMusic" src="https://www.bensound.com/bensound-music/bensound-summer.mp3" loop></audio>
+    
+    <script>
+        function celebrateHoli() {
+            alert('Wishing you a vibrant and colorful Holi! 🌸✨');
+            document.body.style.background = 'linear-gradient(135deg, #ff6f61, #ff914d, #ffcc00)';
+        }
+        function toggleMusic() {
+            var music = document.getElementById("holiMusic");
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        }
+        function sendMessage() {
+            var input = document.getElementById("chatInput");
+            var message = input.value;
+            if (message.trim() !== "") {
+                var chatBox = document.getElementById("chatBox");
+                var newMessage = document.createElement("p");
+                newMessage.textContent = message;
+                chatBox.appendChild(newMessage);
+                input.value = "";
+            }
+        }
+        function shareOnSocial(platform) {
+            let url = encodeURIComponent(window.location.href);
+            let text = encodeURIComponent("🎉 Celebrate Holi with us! 🌈 Join the fun: ");
+            let shareLinks = {
+                whatsapp: `https://wa.me/?text=${text}${url}`,
+                facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+                twitter: `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=HoliFestival,ColorBlast`,
+                instagram: `https://www.instagram.com/?url=${url}`,
+                linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+                telegram: `https://t.me/share/url?url=${url}&text=${text}`
+            };
+            window.open(shareLinks[platform], '_blank');
+        }
+    </script>
+</body>
+</html>
